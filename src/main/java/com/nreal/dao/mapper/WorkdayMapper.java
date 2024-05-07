@@ -9,6 +9,7 @@ import com.nreal.dao.entity.Workday;
  */
 public interface WorkdayMapper extends BaseMapper<Workday> {
 
+    public Integer searchTodayIsWorkdays();
 }
 
 

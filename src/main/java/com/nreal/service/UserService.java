@@ -16,4 +16,6 @@ public interface UserService extends IService<User> {
     Set<String> searchUserPermissions(int userId);
 
     int login(String code);
+
+    User searchById(int userId);
 }

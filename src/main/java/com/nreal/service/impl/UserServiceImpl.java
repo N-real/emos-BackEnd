@@ -90,6 +90,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw new EmosException("账户不存在");
         return id;
     }
+
+    @Override
+    public User searchById(int userId) {
+        User user = userMapper.searchById(userId);
+        return user;
+    }
 }
 
 

@@ -21,6 +21,8 @@ public interface UserMapper extends BaseMapper<User> {
     Set<String> searchUserPermissions(int userId);
 
     void insert(HashMap param);
+
+    User searchById(int userId);
 }
 
 
