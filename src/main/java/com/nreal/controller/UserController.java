@@ -1,6 +1,7 @@
 package com.nreal.controller;
 
 import com.nreal.common.response.Result;
+import com.nreal.dto.LoginDto;
 import com.nreal.dto.RegisterDto;
 import com.nreal.service.UserService;
 import com.nreal.web.shiro.JwtUtil;
@@ -39,6 +40,15 @@ public class UserController {
         Set<String> set = userService.searchUserPermissions(userId);
         saveCacheToken(token,userId);
         return Result.ok("用户注册成功").put("token",token).put("permission",set);
+    }
+
+    @PostMapping("/login")
+    public Result login(@Valid @RequestBody LoginDto loginDto){
+        int userId = userService.login(loginDto.getCode());
+        String token = jwtUtil.createToken(userId);
+        saveCacheToken(token,userId);
+        Set<String> set = userService.searchUserPermissions(userId);
+        return Result.ok("登录成功").put("token",token).put("permission",set);
     }
 
     private void saveCacheToken(String token,int userId){
